@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "smart-closet",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
