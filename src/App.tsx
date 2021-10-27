@@ -16,7 +16,10 @@ import Tab3 from './pages/Tab3';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
-import '@mobiscroll/react/dist/css/mobiscroll.min.css';
+
+import '@mobiscroll/react/dist/css/mobiscroll.min.css';
+
+
 
 
 /* Basic CSS for apps built with Ionic */
@@ -56,11 +59,11 @@ const App: React.FC = () => (
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
             <IonIcon icon={triangle} />
-            <IonLabel>Weather</IonLabel>
+            <IonLabel>Agenda</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab2" href="/tab2">
             <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+            <IonLabel>Weather</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
             <IonIcon icon={square} />
