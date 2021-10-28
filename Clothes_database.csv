@@ -1,24 +1,24 @@
-Article, Style, Color, Material, Aesthetic, Rain, Wind, Cold
-Shoe, Casual, Black, Textile, Hip,0,1,0
-Shoe, Classy, Brown, Leather, Office,0,1,0
-Shoe, Classy-casual, Black, Leather, Winter,1,1,1
-Shoe, Casual, Red, Rubber, Summer,0,0,0
-T-shirt, Casual, Pink, Cotton, Flower-power,0,0,0
-T-shirt, Casual, Black, Cotton, Goth,0,0,1
-T-shirt, Casual, White, Cotton, Light,0,0,0
-T-shirt, Casual, Orange, Cotton, Happy,0,0,0
-T-shirt, Casual, Black, Cotton, Hip,0,0,0
-Shirt, Classy-casual, White, Flax, Summer,0,0,0
-Shirt, Classy, White, Linen, Office,0,0,0
-Shirt, Classy, Black, Linen, Office,0,0,0
-Shirt, Classy-casual, Red, Flannel, Winter,0,0,1
-Pants, Casual, Black, Jeans, Hip,0,1,0
-Pants, Casual, Blue, Jeans, Hip,0,1,0
-Pants, Classy-casual, Brown, Corduroy, Office,0,1,1
-Hoodie, Casual, Blue, Cotton, Hip,0,0,1
-Hoodie, Casual, Black, Cotton, Hip,0,0,1
-Blouse, Classy-casual, Orange, Cotton, Office,0,0,1
-Blouse, Casual, Blue, Cotton, Hip,0,0,1
-Blouse, Classy-casual, White, Cotton, Office,0,0,1
-Jacket, Casual, Blue, Jeans, Autumn,1,1,1
-Jacket, Casual, Black, Nylon, Autumn,1,1,0
+Article,Style,Color,Material,Aesthetic,Rain,Wind,Cold
+Shoe,Casual,Black,Textile,Hip,0,1,0
+Shoe,Classy,Brown,Leather,Office,0,1,0
+Shoe,Classy-casual,Black,Leather,Winter,1,1,1
+Shoe,Casual,Red,Rubber,Summer,0,0,0
+T-shirt,Casual,Pink,Cotton,Flower-power,0,0,0
+T-shirt,Casual,Black,Cotton,Goth,0,0,1
+T-shirt,Casual,White,Cotton,Light,0,0,0
+T-shirt,Casual,Orange,Cotton,Happy,0,0,0
+T-shirt,Casual,Black,Cotton,Hip,0,0,0
+Shirt,Classy-casual,White,Flax,Summer,0,0,0
+Shirt,Classy,White,Linen,Office,0,0,0
+Shirt,Classy,Black,Linen,Office,0,0,0
+Shirt,Classy-casual,Red,Flannel,Winter,0,0,1
+Pants,Casual,Black,Jeans,Hip,0,1,0
+Pants,Casual,Blue,Jeans,Hip,0,1,0
+Pants,Classy-casual,Brown,Corduroy,Office,0,1,1
+Hoodie,Casual,Blue,Cotton,Hip,0,0,1
+Hoodie,Casual,Black,Cotton,Hip,0,0,1
+Blouse,Classy-casual,Orange,Cotton,Office,0,0,1
+Blouse,Casual,Blue,Cotton,Hip,0,0,1
+Blouse,Classy-casual,White,Cotton,Office,0,0,1
+Jacket,Casual,Blue,Jeans,Autumn,1,1,1
+Jacket,Casual,Black,Nylon,Autumn,1,1,0
