@@ -2,8 +2,9 @@ import weather_api as w_api
 import calendar_api as c_api
 import pandas as pd
 import outfit_chooser as oc
+import os
 
-database = pd.read_csv("..\Clothes_database.csv") # import clothing items database
+database = pd.read_csv(os.path.dirname(__file__) + '/../Clothes_database.csv') # import clothing items database
 
 def do_nothing():
     return None
@@ -39,10 +40,12 @@ def remove_casual():
     return None
 
 def main():
-
     print('Hello and welcome to the Smart Closet v0.1! this is how the weather looks like:')
 
     need_cold,need_wind,need_rain,events = import_api_data()
+    print('Here are your events for the day:')
+    for e in events:
+        print(e)
     keywords = get_keywords(events)
     style = 'Casual'
     for elem in keywords:
@@ -65,6 +68,15 @@ def main():
             do_nothing()
     
     outfit = oc.Outfit(need_cold,need_wind,need_rain,style,database)
-
+    outfit.choose_outfit()
+    print('Here is your outfit:\n')
+    if (outfit.coat != None):
+        print(database.iloc[outfit.coat])
+    if (outfit.top2 != None):
+        print(database.iloc[outfit.top2])
+    print(database.iloc[outfit.top1])
+    print(database.iloc[outfit.bottom])
+    print(database.iloc[outfit.footwear])
+   
 if __name__ == "__main__":
     main()

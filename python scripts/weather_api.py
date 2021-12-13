@@ -47,11 +47,12 @@ def weather_api():
     weather_call = rq.get('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&exclude=current,minutely,daily,alerts&units=metric&appid='+key)
     data = weather_call.json()['hourly']
 
-    # Get key values from the weather data, namely the temperature, wind speeds and weather forecast (think rainy, sunny, etc.)
+    # Get key values from the weather data, namely the temperature, wind speeds and weather forecast
     temps=[]
     winds=[]
     weather=[]
     weatherIDs=[]
+
     for i in range(0,12):
         temps.append(data[i]['temp'])
         winds.append(data[i]['wind_speed'])
