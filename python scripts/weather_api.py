@@ -18,7 +18,7 @@ def get_lat_lon():
     return lat,lon
 
 # Decide whether clothing should be appropriate for cold, wind and rain based on weather
-def weather_needs(temperature,wind_speeds,weather_status,weather):
+def weather_needs(temperature,wind_speeds,weather_status):
     need_temp, need_wind, need_rain = False, False, False
     temp1, temp2 = sum(temperature[:int(len(temperature)/2)])/(len(temperature)/2),sum(temperature[int(len(temperature)/2):])/(len(temperature)/2)
     wind1, wind2 = sum(wind_speeds[:int(len(wind_speeds)/2)])/(len(wind_speeds)/2),sum(wind_speeds[int(len(wind_speeds)/2):])/(len(wind_speeds)/2)
@@ -31,9 +31,7 @@ def weather_needs(temperature,wind_speeds,weather_status,weather):
             need_rain = True
         
 
-    print("Average temp over the next 6 hours: ",temp1)
-    print("Average wind over the next 6 hours: ",wind1)
-    print("Current weather: " + weather[0])
+    
 
     return need_temp, need_wind, need_rain
 
@@ -59,7 +57,7 @@ def weather_api():
         weather.append(data[i]['weather'][0]['description'])
         weatherIDs.append(data[i]['weather'][0]['id'])
 
-    need_temp, need_wind, need_rain = weather_needs(temps,winds,weatherIDs,weather)
+    need_temp, need_wind, need_rain = weather_needs(temps,winds,weatherIDs)
     
-    return need_temp,need_wind,need_rain
+    return need_temp,need_wind,need_rain,sum(temps[:int(len(temps)/2)])/(len(temps)/2),sum(winds[:int(len(winds)/2)])/(len(winds)/2),weather[0]
 

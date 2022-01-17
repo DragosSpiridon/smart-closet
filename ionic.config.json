@@ -1,7 +1,0 @@
-{
-  "name": "smart-closet",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}
