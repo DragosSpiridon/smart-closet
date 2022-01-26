@@ -3,6 +3,7 @@
 # Secret key value: nr~7Q~aMcqDhl5RuHPoJyBqhbFC6y3WPcUln5
 
 from O365 import Account, MSGraphProtocol
+import datetime as dt
 
 CLIENT_ID = '9568e72e-9eb7-4bcb-a14e-72ba6a477539'
 SECRET_ID = 'nr~7Q~aMcqDhl5RuHPoJyBqhbFC6y3WPcUln5'
@@ -20,8 +21,11 @@ def calendar_api(credentials):
 
    schedule = account.schedule()
    calendar = schedule.get_default_calendar()
-   ev = calendar.get_events(include_recurring=False) 
-   #events = calendar.get_events(query=q, include_recurring=True) 
+
+   q = calendar.new_query('start').greater_equal(dt.date.today())
+
+   #ev = calendar.get_events(include_recurring=False) 
+   ev = calendar.get_events(query=q, include_recurring=False) 
 
    events=list()
 

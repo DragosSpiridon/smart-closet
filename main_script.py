@@ -9,7 +9,6 @@ database = pd.read_csv(os.path.dirname(__file__) + '/../Clothes_database.csv') #
 if 'first_time' not in st.session_state:
     st.session_state.first_time = True
 
-
 def do_nothing():
     return None
 
@@ -99,14 +98,13 @@ def main():
         case _:
             do_nothing()
 
-    outfit = oc.Outfit(need_cold,need_wind,need_rain,style,database)
+    outfit = oc.Outfit(need_cold,need_wind,need_rain,database)
 
     
-    st.button('Choose another outfit', on_click = outfit.choose_outfit())
+    st.button('Choose another outfit', on_click = outfit.choose_outfit(style))
     
-    
+
     items = list()
-
     if (outfit.coat != None):
         items.append(outfit.coat)
     if (outfit.top2 != None):

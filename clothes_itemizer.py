@@ -5,7 +5,7 @@ import pandas as pd
 from csv import writer
 
 global database
-database = pd.read_csv(os.path.dirname(__file__) + '/../Clothes_database.csv')
+database = pd.read_csv('Clothes_database.csv')
 root = Tk()
 root.title('Clothes itemizer')
 root.geometry('225x170')
@@ -78,20 +78,19 @@ def create_item():
 
 def register_item():
     new_entry = [id,radioType.get(),article_entry.get(),radioStyle.get(),color_entry.get(),material_entry.get(),aesthetic_entry.get(),radioRain.get(),radioWind.get(),radioCold.get()]
-    print(new_entry)
-    print(type(new_entry))
-    with open(os.path.dirname(__file__) + '/../Clothes_database.csv','a',newline='') as csv_file:
+    with open('Clothes_database.csv','a',newline='') as csv_file:
         writer_obj = writer(csv_file)
+        print(new_entry)
         writer_obj.writerow(new_entry)
         csv_file.close()
 
-    top.destroy()
+    #top.destroy()
 
 def check_database():
     global id
     id = int(entry.get())
     if id in database.values:
-        messagebox.showwarning("Popup", "The item is already in the database.")
+        response = messagebox.showwarning("Popup", "The item is already in the database.")
     else:
         response = messagebox.askyesno('Add item to database', 'ID is not found in database. Do you want to register it?')
     if response == 1:
@@ -104,7 +103,7 @@ empty = Label(root, text=' ', padx=10, pady=10)
 
 label.grid(row=0, column=0)
 entry.grid(row=1, column=0)
-empty.grid(row = 2, column = 0)
+empty.grid(row=2, column=0)
 check_button.grid(row=3, column=0)
 
 
