@@ -10,6 +10,8 @@ root = Tk()
 root.title('Clothes itemizer')
 root.geometry('225x170')
 
+
+# Top level GUI; called when a new item is to be registered
 def create_item():
     global top
     top=Toplevel()
@@ -58,6 +60,7 @@ def create_item():
     for style in styles:
         button_s = Radiobutton(style_label, text = style, variable = radioStyle, value = style)
         button_s.pack(anchor=W)
+    
     global material_entry, aesthetic_entry, article_entry, color_entry
     material_entry = Entry(material_label, width=20, borderwidth=5)
     aesthetic_entry = Entry(aesthetic_label, width=20, borderwidth=5)
@@ -67,6 +70,7 @@ def create_item():
     aesthetic_entry.pack()
     article_entry.pack()
     color_entry.pack()
+    
     Radiobutton(rain_label, text= 'No', variable=radioRain, value = 0).pack(anchor=W)
     Radiobutton(rain_label, text= 'Yes', variable=radioRain, value = 1).pack(anchor=W)
     Radiobutton(wind_label, text= 'No', variable=radioWind, value = 0).pack(anchor=W)
@@ -76,15 +80,15 @@ def create_item():
     Button(button_label, text='Register', command = register_item).pack()
     Button(button_label, text='Cancel', command = top.destroy).pack()
 
+# Function called to register the new item to the CSV file
 def register_item():
     new_entry = [id,radioType.get(),article_entry.get(),radioStyle.get(),color_entry.get(),material_entry.get(),aesthetic_entry.get(),radioRain.get(),radioWind.get(),radioCold.get()]
     with open('Clothes_database.csv','a',newline='') as csv_file:
         writer_obj = writer(csv_file)
-        print(new_entry)
         writer_obj.writerow(new_entry)
         csv_file.close()
 
-    #top.destroy()
+    top.destroy()
 
 def check_database():
     global id
@@ -96,6 +100,7 @@ def check_database():
     if response == 1:
         create_item()
 
+# GUI elements present on the first page 
 label = Label(root, text='Enter code here:',padx=10, pady=10)
 entry = Entry(root, width=35,borderwidth=5)
 check_button = Button(root, text = 'Check database', command=check_database)

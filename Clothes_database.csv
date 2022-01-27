@@ -33,3 +33,4 @@ ID,Type,Article,Style,Color,Material,Aesthetic,Rain,Wind,Cold
 131,Top,Shirt,Classy-casual,Black,Flannel,Winter,0,0,1
 132,Bottom,Pants,Classy-casual,Blue,Denim,Grunge,0,1,1
 133,Bottom,Pants,Classy-casual,Brown,Textile,Office,0,1,1
+134,Footwear,Shoes,Classy,Blue,Textile,Office,0,1,0

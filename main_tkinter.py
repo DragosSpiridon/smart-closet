@@ -23,25 +23,37 @@ def get_keywords(events):
     return keywords
 
 def remove_classy():
-    for i in range(len(database)):
-        if (database.at[i,'Style'] == 'Casual' or database.at[i,'Style'] == 'Classy-casual'):
-            database.drop(i,inplace=True)
+    aux_db = database.copy()
+    for i in range(len(aux_db)):
+        if (aux_db.at[i,'Style'] == 'Casual' or aux_db.at[i,'Style'] == 'Classy-casual'):
+            aux_db.drop(i,inplace=True)
 
-    database.reset_index(drop=True, inplace=True)
-    return None
+    aux_db.reset_index(drop=True, inplace=True)
+    return aux_db
 
 def remove_casual():
-    for i in range(len(database)):
-        if (database.at[i,'Style'] == 'Classy'):
-            database.drop(i,inplace=True)
+    aux_db = database.copy()
+    for i in range(len(aux_db)):
+        if (aux_db.at[i,'Style'] == 'Classy'):
+            aux_db.drop(i,inplace=True)
 
-    database.reset_index(drop=True, inplace=True)
-    return None
+    aux_db.reset_index(drop=True, inplace=True)
+    return aux_db
 
 def update_table():
     db_view.delete(*db_view.get_children())
     user_style = radioStyle.get()
-    outfit.choose_outfit(user_style)
+    wardrobe = database
+    match(user_style):
+        case 'Casual':
+            wardrobe = remove_casual()
+        case 'Classy-casual':
+            do_nothing()
+        case 'Classy':
+            wardrobe = remove_classy()
+        case _:
+            do_nothing()
+    outfit.choose_outfit(user_style,wardrobe)
     items = list()
     if (outfit.coat != None):
         items.append(outfit.coat)
@@ -51,7 +63,7 @@ def update_table():
     items.append(outfit.bottom)
     items.append(outfit.footwear)
     global curr_outfit
-    curr_outfit = database.iloc[items]
+    curr_outfit = wardrobe.iloc[items]
 
     db_view["column"] = list(curr_outfit.columns)
     db_view["show"] = "headings"
@@ -89,7 +101,19 @@ def change_items():
 
 def update_items(answers):
 
-    new_outfit = outfit.change_items(curr_outfit, answers)
+    wardrobe = database
+    user_style = radioStyle.get()
+    match(user_style):
+        case 'Casual':
+            wardrobe = remove_casual()
+        case 'Classy-casual':
+            do_nothing()
+        case 'Classy':
+            wardrobe = remove_classy()
+        case _:
+            do_nothing()
+
+    new_outfit = outfit.change_items(curr_outfit, answers, wardrobe)
 
     change_label = LabelFrame(top, text='Outfit', padx=10, pady=10)
     change_label.place(x=15, y=250, height=190, width=380)
@@ -113,6 +137,7 @@ def update_items(answers):
     for row in rows:
         outfit_view.insert("", "end", values=row)
 
+############# Start of main loop #################
 
 global database
 database = pd.read_csv('Clothes_database.csv')
@@ -169,13 +194,14 @@ for elem in keywords:
     elif(elem == 'office' or elem == 'meeting'):
         user_style = 'Classy'
 
+wardrobe = database
 match(user_style):
     case 'Casual':
-        remove_casual()
+        wardrobe = remove_casual()
     case 'Classy-casual':
         do_nothing()
     case 'Classy':
-        remove_classy()
+        wardrobe = remove_classy()
     case _:
         do_nothing()
 
@@ -194,15 +220,15 @@ scroll_x.pack(side='bottom', fill='x')
 scroll_y.pack(side='right', fill='y')
 
 global outfit
-outfit = oc.Outfit(need_cold,need_wind,need_rain,database)
-outfit.choose_outfit(user_style)
+outfit = oc.Outfit(need_cold,need_wind,need_rain)
+outfit.choose_outfit(user_style, wardrobe)
 
 outfit_button = Button(root, text='Suggest outfit', command = update_table)
 outfit_button.place(x = 30, y = 440)
 change_button = Button(root, text='Change items', command=change_items)
 change_button.place(x = 30, y = 475)
 
-update_table()
+#update_table()
 
 
 
